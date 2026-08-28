@@ -1,0 +1,12 @@
+{
+  "name": "civnodes-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static web server for the CivNodes Locator map",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT"
+}
