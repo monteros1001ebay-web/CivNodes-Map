@@ -47,6 +47,54 @@ body{
   box-sizing:border-box;
 }
 
+.topnav{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+  padding-bottom:8px;
+  margin-bottom:8px;
+  border-bottom:1px solid var(--line);
+  flex:none;
+}
+.topnav-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:'Cinzel', serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:linear-gradient(160deg, var(--brass-light), var(--brass));
+  text-decoration:none;
+  padding:7px 16px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.25);
+  box-shadow:0 6px 16px -8px rgba(0,0,0,0.6);
+  transition:transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+}
+.topnav-icon{
+  width:1em;
+  height:1em;
+  flex:none;
+}
+.topnav-link-discord{
+  color:#fff;
+  background:linear-gradient(160deg, #7f8dfb, #5865F2);
+  border-color:rgba(0,0,0,0.2);
+  box-shadow:0 6px 16px -8px rgba(88,101,242,0.6);
+}
+.topnav-link-discord:hover{
+  filter:brightness(1.1);
+}
+.topnav-link:hover{
+  filter:brightness(1.08);
+  transform:translateY(-1px);
+  box-shadow:0 10px 20px -8px rgba(0,0,0,0.7);
+}
+
 header.top{
   display:flex;
   align-items:baseline;
@@ -75,6 +123,30 @@ h1{
   color:var(--ivory);
 }
 h1 span{color:var(--brass-light);}
+.header-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+.server-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:'JetBrains Mono', monospace;
+  font-size:16px;
+  padding:8px 18px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:rgba(201,161,59,0.08);
+}
+.server-ip{
+  color:var(--brass-light);
+  font-weight:700;
+  font-size:1.2em;
+}
+.server-sep{ color:#5c6389; }
+.server-port{ color:#dfe1e6; }
 .top-meta{
   text-align:right;
   font-family:'JetBrains Mono', monospace;
@@ -1136,12 +1208,27 @@ footer{
 <body>
 <div class="frame">
 
+  <nav class="topnav" id="topnav">
+    <a class="topnav-link" href="https://civnodes.com/" target="_blank" rel="noopener noreferrer">
+      <svg class="topnav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+      CivNodes Website
+    </a>
+    <a class="topnav-link topnav-link-discord" href="https://discord.gg/civnodes" target="_blank" rel="noopener noreferrer">
+      <svg class="topnav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.522 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+      Join The Discord
+    </a>
+  </nav>
+
   <header class="top">
     <div>
       <h1>CivNodes <span>Locator</span></h1>
     </div>
-    <div class="top-meta">
-      World bounds: <b>30,000 × 30,000</b> blocks
+    <div class="header-right">
+      <div class="server-box">
+        <span class="server-ip">play.civnodes.net</span>
+        <span class="server-sep">·</span>
+        <span class="server-port">Port: 19132</span>
+      </div>
     </div>
   </header>
 
